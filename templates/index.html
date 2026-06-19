@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Student Information Form</h1>
+
+    <form action="/add" method="POST">
+
+        <label>Student ID</label>
+        <input type="number" name="student_id" required>
+
+        <label>Student Name</label>
+        <input type="text" name="student_name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Mobile Number</label>
+        <input type="text" name="mobile" required>
+
+        <label>Course</label>
+        <input type="text" name="course" required>
+
+        <label>Branch</label>
+        <input type="text" name="branch" required>
+
+        <label>Year of Study</label>
+        <select name="year">
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+        </select>
+        <br><br>
+
+<div class="button-group">
+
+<button type="submit">
+Submit
+</button>
+
+<a href="/view">
+<button type="button">
+View
+</button>
+</a>
+
+<button type="button"
+onclick="editStudent()">
+Update
+</button>
+
+<button type="button"
+onclick="deleteStudent()">
+Delete
+</button>
+
+<button type="reset">
+Close
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<script>
+
+function editStudent()
+{
+    let id =
+    document.getElementsByName(
+    "student_id")[0].value;
+
+    if(id=="")
+    {
+        alert("Enter Student ID");
+        return;
+    }
+
+    window.location.href =
+    "/edit/" + id;
+}
+
+function deleteStudent()
+{
+    let id =
+    document.getElementsByName(
+    "student_id")[0].value;
+
+    if(id=="")
+    {
+        alert("Enter Student ID");
+        return;
+    }
+
+    window.location.href =
+    "/delete/" + id;
+}
+
+</script>
+
+</body>
+</html>
